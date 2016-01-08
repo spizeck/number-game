@@ -56,7 +56,10 @@ while difficulty < 10:
         print('Do you want to try again?')
         tryAgain = input("y/n? ")
         if tryAgain.lower() == "y":
-            difficulty = 1
+			#Reset values to start over            
+			difficulty = 1
+            guessesTaken = 0
+            highNumber = 20
         elif tryAgain.lower() != "y":
             print("Thanks for playing,", myName,'!')
             break
