@@ -46,7 +46,6 @@ class NumberGame:
                     print('Invalid input.')
             except ValueError:
                 print('Invalid input')
-        # Add 1 to guess count
         self.guess_count += 1
         # Give user clues
         if self.guess < self.com_number and self.guess_count < 6:
@@ -55,7 +54,7 @@ class NumberGame:
         elif self.guess > self.com_number and self.guess_count < 6:
             print('Too high.')
             self.game_loop()
-        elif self.guess is self.com_number:
+        elif self.guess == self.com_number:
             self.you_win()
             self.high_number += 20
             self.again()
@@ -80,6 +79,13 @@ class NumberGame:
             print('Thanks for playing {}!'.format(self.player_name))
             return
 
+#TODO add scoring system
+# def high_score():
+#     with open('high_score.txt', 'r') as f:
+#         content = []
+#         for line in f:
+#             content.append(line.strip())
+#     scores = content[1:]
 
 def main():
     difficulty = 1
