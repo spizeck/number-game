@@ -79,13 +79,15 @@ class NumberGame:
             print('Thanks for playing {}!'.format(self.player_name))
             return
 
-#TODO add scoring system
+
+# TODO add scoring system
 # def high_score():
 #     with open('high_score.txt', 'r') as f:
 #         content = []
 #         for line in f:
 #             content.append(line.strip())
 #     scores = content[1:]
+
 
 def main():
     difficulty = 1

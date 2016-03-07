@@ -4,13 +4,12 @@ import random
 
 usr_name = 'Test'
 
-LARGE_FONT= ("Verdana", 12)
+LARGE_FONT = ("Verdana", 12)
 SMALL_FONT = ("Verdana", 9)
 
+
 class NumberGameApp(tk.Tk):
-
     def __init__(self, *args, **kwargs):
-
         tk.Tk.__init__(self, *args, **kwargs)
 
         self.minsize(width=300, height=200)
@@ -19,7 +18,7 @@ class NumberGameApp(tk.Tk):
 
         container = tk.Frame(self)
 
-        container.pack(side="top", fill="both", expand = True)
+        container.pack(side="top", fill="both", expand=True)
 
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
@@ -27,7 +26,6 @@ class NumberGameApp(tk.Tk):
         self.frames = {}
 
         for F in (StartPage, PageOne):
-
             frame = F(container, self)
 
             self.frames[F] = frame
@@ -37,34 +35,31 @@ class NumberGameApp(tk.Tk):
         self.show_frame(StartPage)
 
     def show_frame(self, cont):
-
         frame = self.frames[cont]
         frame = frame.tkraise()
 
 
 class StartPage(tk.Frame):
-
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Start Page", font = LARGE_FONT)
+        label = tk.Label(self, text="Start Page", font=LARGE_FONT)
         label.pack(pady=20)
 
-        entry_label = tk.Label(self, text="Enter your name", font = SMALL_FONT)
+        entry_label = tk.Label(self, text="Enter your name", font=SMALL_FONT)
         entry_label.pack()
 
         global usr_name
         usr_name = tk.StringVar()
-        name_entry = tk.Entry(self, textvariable= usr_name)
+        name_entry = tk.Entry(self, textvariable=usr_name)
         name_entry.pack(pady=5, padx=5)
 
         button = ttk.Button(self, text="Lets Play!",
-                           command=lambda: controller.show_frame(PageOne))
+                            command=lambda: controller.show_frame(PageOne))
 
         button.pack(pady=5, padx=5)
 
 
 class PageOne(tk.Frame):
-
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
@@ -76,10 +71,10 @@ class PageOne(tk.Frame):
 
         print_var = tk.StringVar()
         print_var.set('I am thinking of a number between 1 and {}'.format(high_num))
-        output_label = tk.Label(self, textvariable= print_var, font=SMALL_FONT)
+        output_label = tk.Label(self, textvariable=print_var, font=SMALL_FONT)
         output_label.pack(pady=15)
 
-        guess_label = tk.Label(self, text="Take a guess", font = SMALL_FONT)
+        guess_label = tk.Label(self, text="Take a guess", font=SMALL_FONT)
         guess_label.pack()
 
         guess = tk.IntVar()
@@ -87,16 +82,15 @@ class PageOne(tk.Frame):
         guess_entry.pack()
 
         button2 = ttk.Button(self, text="Enter",
-                            command= lambda: self.check_num(print_var, high_num, com_num, guess.get()))
+                             command=lambda: self.check_num(print_var, high_num, com_num, guess.get()))
         button2.pack(pady=5, padx=5)
 
         button1 = ttk.Button(self, text="Back to Home",
-                            command=lambda: controller.show_frame(StartPage))
+                             command=lambda: controller.show_frame(StartPage))
         button1.pack(pady=5, padx=5)
 
     def test1(self, var):
-        var.set('did this work? {}'.format(usr_name.get()))
-        return var
+        pass
 
     def game_loop(self, user_name):
         pass
@@ -105,7 +99,6 @@ class PageOne(tk.Frame):
         high_num = difficulty * 20
         com_num = random.randint(1, high_num)
         return com_num, high_num
-
 
     def check_num(self, print_var, high_num, com_num, guess):
         try:
@@ -128,9 +121,9 @@ class PageOne(tk.Frame):
 
 
 def main():
-
     app = NumberGameApp()
     app.mainloop()
+
 
 if __name__ == '__main__':
     main()
